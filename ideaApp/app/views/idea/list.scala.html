@@ -1,0 +1,10 @@
+@(ideas: List[Idea])(implicit lang: Lang)
+
+@main("application.name") {
+  <dl class="ideas">
+    @for(idea <- ideas) {
+      <dt>@idea.name</dt>
+      <dd>@idea.description</dd>
+    }
+  </dl>
+} 

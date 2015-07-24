@@ -1,0 +1,256 @@
+@(User: Form[User])
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ideation Portal - User Registration</title>
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap-theme.min.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/formValidation.css")">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+
+
+$(document).ready(function () {
+
+    $('#validation').validate({ // initialize the plugin
+        errorElement: 'div', 
+        rules: {
+            "email": {
+                required: true,
+                           },
+            "password": {
+                required: true,
+                minlength: 5
+               },
+            "confirmpassword": {
+                required: true,
+                equalTo: "#password"},
+            "firstName":{
+                 required: true,},
+            "lastName":{
+                 required: true,},
+            "phonenumber": {
+                    required: true,
+                    number: true,
+                    minlength:10
+                },
+               "date" : {
+                    required: true,
+                },
+                "month": {
+                    required: true,
+                },
+                "year": {
+                    required: true,
+                },
+             "PostalAddress":{
+                 required: true,
+             },
+               
+             "ZipCode": {
+                    required: true,
+                    number: true,
+                    minlength:6
+                 }, 
+                "gender":{
+                     required: true,},
+                 "agree": {
+                     required: true,
+                    }
+        },
+highlight: function (element, errorClass, validClass) {
+  $(element).nextAll('.glyphicon').removeClass('hidden');
+  $(element).nextAll('.glyphicon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+  $(element).nextAll('.glyphicon').removeClass('has-error').addClass('has-success');
+},
+unhighlight: function (element, errorClass, validClass) {
+  $(element).nextAll('.glyphicon').removeClass('hidden');
+  $(element).nextAll('.glyphicon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+  $(element).nextAll('.glyphicon').removeClass('has-error').addClass('has-success');
+},
+    
+
+   messages:  {
+        email: {
+            required:  "Please provide a valid email",
+        },
+        password: {
+            required: "Please provide a password",
+            minlength: "Your password must be at least 5 characters long"
+            
+        },
+        confirmpassword: {
+            required: "Please provide a confirm password",
+            equalTo: "Please enter the same password as above"
+            },
+            firstName: {
+                required:  "Please provide firstName",
+            },
+            lastName: {
+                required:  "Please provide lastName",
+            },
+            phonenumber: {
+                required: "Please enter your valid phoneNumber.",
+                number:'Please provide numeric digits only.',
+                minlength:'Please provide 10 digit phoneNumber'
+             },
+             date:{
+                 required:  "Please provide date",
+                },
+            month:{
+                 required:  "Please provide month",
+                },
+            year:{
+                     required:  "Please provide year",
+                    },
+             PostalAddress:{
+                required:  "Please provide  PostalAddress",
+            },
+            ZipCode: {
+                required: "Please enter your valid zipCode.",
+                number:'Please provide numeric digits only.',
+                minlength:'Please provide 6 digit zipCode'
+            },
+            gender: {
+                required:  "Please provide a valid gender",
+            },
+            agree: {
+                required:  "You must agree terms and conditions",
+            }
+            
+            }
+            });
+});
+</script>
+</head>
+<body>
+    <div class="bs-example">
+    <h1>Sign Up</h1>
+    
+    <form class="form-horizontal" id="validation" name="validation" action="/register/welcome.scala.html" method="POST">
+       
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="email">Email:</label>
+            <div class="col-xs-9">
+                @<input type="email" class="form-control" id="email" placeholder="Email" name="email">
+            <span class="glyphicon form-control-feedback" id="email1"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="password">Password:</label>
+            <div class="col-xs-9">
+                <input type="password" class="form-control" id="password" placeholder="password" name="password">
+                <span class="glyphicon form-control-feedback" id="pwd1"></span>
+            </div>
+        </div>
+      
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="confirmpassword">Confirm Password:</label>
+            <div class="col-xs-9">
+                <input type="password" class="form-control" id="confirmpassword" placeholder="confirmpassword" name="confirmpassword">
+            </div>
+        </div>
+           <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="firstName">First Name:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="firstName" placeholder="firstName" name="firstName">
+                <span class="glyphicon form-control-feedback" id="firstname1"></span>
+            </div>
+        </div>
+       <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="lastName">Last Name:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="lastName" placeholder="lastName" name="lastName">
+                <span class="glyphicon form-control-feedback" id="lastname1"></span>
+            </div>
+        </div>
+         <div class="form-group has- feedback">
+            <label class="control-label col-xs-3" for="phoneNumber">Phone:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="phoneNumber" placeholder="phonenumber" name="phonenumber">
+                 <span class="glyphicon form-control-feedback" id="phone1"></span>
+            </div>
+        </div>
+        <div class="form-group">
+                <label class="control-label col-xs-3">Date of Birth:</label>
+                <div class="col-xs-3">
+                    <select name="date" id="date" class="form-control">
+                        <option value="">date</option>
+                        <option value="1">01</option>
+                        <option value="2">02</option>
+                        <option value="3">03</option>
+                         <option value="4">04</option>
+                    </select>
+                    <select name="month" id="month" class="form-control">
+                        <option value="">month</option>
+                        <option value="1">jan</optionx>
+                        <option value="2">feb</option>
+                        <option value="3">march</option>
+                         <option value="4">april</option>
+                    </select>
+                    <select name="year" id="year" class="form-control">
+                        <option value="">year</option>
+                        <option value="1">1966</option>
+                        <option value="2">1965</option>
+                        <option value="3">1964</option>
+                         <option value="4">1963</option>
+                    </select>
+                </div>
+        </div>
+         <div class="form-group has-feedback">
+            <label class="control-label col-xs-3" for="postalAddress">Address:</label>
+            <div class="col-xs-9">
+                <textarea rows="3" class="form-control" id="postalAddress" name="PostalAddress" placeholder="Postal Address"></textarea>
+                <span class="glyphicon form-control-feedback" id="postaladdress1"></span>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="ZipCode">Zip Code:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="ZipCode" name="ZipCode" placeholder="ZipCode">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3">Gender:</label>
+            <div class="col-xs-2">
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="male"> Male
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="female"> Female
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="news" value="news"> Send me latest news and updates.
+                </label>
+            </div>
+        </div>
+          <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="agree" value="agree">  I agree to the <a href="#">Terms and Conditions</a>.
+                </label>
+            </div>
+        </div>
+       
+        <button type="submit" >Submit</button>
+        <button type="reset" class="btn btn-default btn-sm">Reset</button>
+        </form>
+</div>
+</body>
+</html>

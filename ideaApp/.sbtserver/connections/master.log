@@ -1,0 +1,16 @@
+New log file opened at Fri Jul 24 11:21:34 IST 2015 by 1980@CSCINDAE727092
+Taking next connection to: 50207
+New client attempting to connect on port: 50208-50207
+  Address = /20.198.67.166:50207
+This client on port 50208 has uuid 9f3c3989-9361-4ec1-984b-1ce91132c72a configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
+Connected Clients: play-fork-run-9f3c3989-9361-4ec1-984b-1ce91132c72a
+Taking next connection to: 50207
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 50207
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 50207
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 50207

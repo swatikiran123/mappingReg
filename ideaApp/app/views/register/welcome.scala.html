@@ -1,0 +1,62 @@
+
+@(users: List[User])(implicit lang: Lang)
+
+@main("application.name") {
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>welcome</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<head>
+<body>
+
+<div class="container">
+<div class="jumbotron">
+  <h1>SUCCESSFULLY REGISTERED!!</h1>
+  </div>
+ <h4>WELLCOME</h4>
+
+    <form class="form-horizontal" name="delete" action="/register/welcome.scala.html" method="POST">
+       <div class="form-group">
+            <label class="control-label col-xs-3">delete:</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="delete" placeholder="delete" name="delete">
+                        <button type="submit" >delete</button>
+            </div>
+        </div>
+
+       
+      </form> 
+ 
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>email</th>
+        <th>password</th>
+        <th>confirmpassword</th>
+        <th>firstname</th>
+        <th>lastname</th>
+        <th>phonenumber</th>
+      </tr>
+    </thead>
+    <tbody>
+      <div class="users">
+   @for(user <- users) {
+      <tr>
+        <td>@user.email</td>
+        <td>@user.password</td>
+        <td>@user.confirmpassword</td>
+        <td>@user.firstName</td>
+        <td>@user.lastName</td>
+        <td>@user.phonenumber</td>
+      </tr>
+  }</div>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
+}
